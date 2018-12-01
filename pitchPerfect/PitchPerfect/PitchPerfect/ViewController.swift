@@ -16,6 +16,9 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var stopRecordingButton: UIButton!
     
+    var recordingLabelText = "tap to record";
+    var recordingLabelAltText = "recording in progress";
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -26,16 +29,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func recordAudio(_ sender: UIButton) {
-        print("record button pressed")
-        recordingLabel.text = "recording in progress"
+        recordingLabel.text = recordingLabelAltText;
         stopRecordingButton.isEnabled = true;
-        recordingButton.isEnabled = false;
+        recordingButton.isEnabled = !stopRecordingButton.isEnabled;
     }
     
     @IBAction func stopRecording(_ sender: UIButton) {
-        recordingLabel.text = "tap to record";
+        recordingLabel.text = recordingLabelText
         stopRecordingButton.isEnabled = false;
-        recordingButton.isEnabled = true;
+        recordingButton.isEnabled = !stopRecordingButton.isEnabled;
     }
 }
 
